@@ -13,9 +13,24 @@
 
 .selector {
     flex-direction: column;
-    padding: 5rem;
+    padding: 1rem 2rem 2rem 2rem;
+    width: 23%;
+    background-color: beige;
+    border-radius: 30px;
+    margin: 2rem;
+    border: .5px black dashed; 
+    box-shadow: 5px 5px 5px  rgb(142, 138, 138);
 }
 
 .builder {
     flex-direction: column;
+}
+
+button {
+    width: fit-content;
+    font-size: 1rem;
+    padding: .5rem;
+    background-color: rgb(4, 79, 79);
+    color: ivory;
+    border: 1px black; 
 }
