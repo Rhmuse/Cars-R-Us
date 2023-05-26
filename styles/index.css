@@ -1,4 +1,21 @@
-#main {
+.container {
     display: flex;
+}
+
+#main {
+    flex-direction: column;
+}
+
+.options {
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.selector {
+    flex-direction: column;
+    padding: 5rem;
+}
+
+.builder {
     flex-direction: column;
 }

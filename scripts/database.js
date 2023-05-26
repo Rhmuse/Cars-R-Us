@@ -1,4 +1,4 @@
-database = {
+let database = {
     paints: [
         {
             id: 1,
@@ -24,22 +24,22 @@ database = {
     interiors: [
         {
             id: 1,
-            upolstery: "Beige Fabric",
+            material: "Beige Fabric",
             price: 200
         },
         {
             id: 2,
-            upolstery: "Charcoal Fabric",
+            material: "Charcoal Fabric",
             price: 210
         },
         {
             id: 3,
-            upolstery: "White Leather",
+            material: "White Leather",
             price: 250
         },
         {
             id: 4,
-            upolstery: "Black Leather",
+            material: "Black Leather",
             price: 230
         }
     ],
