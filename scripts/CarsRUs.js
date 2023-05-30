@@ -8,7 +8,6 @@ export const CarsRUs = () => {
         ${Builder()}
     </section>
     <section class="container orders">
-        <h2>Custom Car Orders</h2>
         ${Orders()}
     </section>`
 }

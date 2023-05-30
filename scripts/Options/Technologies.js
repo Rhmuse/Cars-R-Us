@@ -20,8 +20,7 @@ export const Technologies = () => {
 
     const arrayOfOptions = techs.map((tech) => {
         return `<option value="${tech.id}">${tech.package}</option>`
-    }
-    )
+    })
 
     html += arrayOfOptions.join("")
     html += "</select>"

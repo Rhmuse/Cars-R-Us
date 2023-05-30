@@ -4,6 +4,7 @@
 
 #main {
     flex-direction: column;
+    margin: 2rem;
 }
 
 .options {
@@ -15,22 +16,46 @@
     flex-direction: column;
     padding: 1rem 2rem 2rem 2rem;
     width: 23%;
-    background-color: beige;
-    border-radius: 30px;
+    background-color: rgb(245, 245, 220);
+    border-radius: 15px;
     margin: 2rem;
-    border: .5px black dashed; 
+    border: .5px rgb(148, 186, 238) dashed; 
     box-shadow: 5px 5px 5px  rgb(142, 138, 138);
 }
 
 .builder {
     flex-direction: column;
+    margin: 1rem;
+}
+
+.orders {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+section.orders h2 {
+    font-size: 2rem; 
+    margin-left: 1rem;
+}
+
+section.builder h1 {
+    font-size: 2rem;
+}
+
+.order {
+    background-color: rgb(240, 248, 255);
+    border: 1px rgb(36, 132, 136) dashed; 
+    padding: 1rem;
+    margin: 1rem;
+    font-size: 1.5rem;
 }
 
 button {
     width: fit-content;
     font-size: 1rem;
     padding: .5rem;
-    background-color: rgb(4, 79, 79);
-    color: ivory;
+    background-color: rgb(24, 85, 88);
+    color: rgb(243, 244, 221);
     border: 1px black; 
 }
