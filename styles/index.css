@@ -63,3 +63,7 @@ button {
     color: rgb(243, 244, 221);
     border: 1px black; 
 }
+
+h1 {
+    margin-bottom: 1rem;
+}
