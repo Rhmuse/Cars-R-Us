@@ -18,8 +18,12 @@ export const Technologies = () => {
     html += '<select id="tech">'
     html += '<option value="0">Select a technology package</option>'
 
+
     const arrayOfOptions = techs.map((tech) => {
-        return `<option value="${tech.id}">${tech.package}</option>`
+        // select should only display name of package.
+        let splitPackage = tech.package.split("(")
+
+        return `<option value="${tech.id}">${splitPackage[0]}</option>`
     })
 
     html += arrayOfOptions.join("")

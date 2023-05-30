@@ -1,5 +1,10 @@
 import { getInteriors, getOrders, getPaints, getTechnologies, getWheels } from './database.js'
 
+const formatter = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+});
+
 
 export const Orders = () => {
     const orders = getOrders();
@@ -26,6 +31,9 @@ export const Orders = () => {
                 return technology.id === order.technologyId;
             }
         )
+        // order should only display name of package.
+        let splitPackage = foundTechnology.package.split("(");
+
         const foundWheels = wheels.find(
             (wheelChoice) => {
                 return wheelChoice.id === order.wheelsId;
@@ -34,7 +42,7 @@ export const Orders = () => {
 
         let totalCost = foundInterior.price + foundPaint.price + foundTechnology.price + foundWheels.price;
 
-        return `<div id="order--${order.id}" class="order">${foundPaint.color} car with ${foundWheels.style}, ${foundInterior.material}, and the ${foundTechnology.package} for a total cost of ${totalCost}.</div>\n`
+        return `<div id="order--${order.id}" class="order">${foundPaint.color} car with ${foundWheels.style}, ${foundInterior.material}, and the ${splitPackage[0]} for a total cost of ${formatter.format(totalCost)}</div>\n`
     })
 
     html += ordersList.join("");
