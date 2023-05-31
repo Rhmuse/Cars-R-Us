@@ -1,4 +1,4 @@
-import { getInteriors, getOrders, getPaints, getTechnologies, getWheels } from './database.js'
+import { getInteriors, getModels, getOrders, getPaints, getTechnologies, getWheels } from './database.js'
 
 const formatter = new Intl.NumberFormat('en-US', {
     style: 'currency',
@@ -12,6 +12,7 @@ export const Orders = () => {
     const interiors = getInteriors();
     const technologies = getTechnologies();
     const wheels = getWheels();
+    const models = getModels();
 
     let html = "<h2>Custom Car Orders</h2>\n";
 
@@ -40,7 +41,14 @@ export const Orders = () => {
             }
         )
 
+        const foundModel = models.find(
+            (model) => {
+                return model.id === order.modelId;
+            }
+        )
+
         let totalCost = foundInterior.price + foundPaint.price + foundTechnology.price + foundWheels.price;
+        totalCost = totalCost * foundModel.modifier;
 
         return `<div id="order--${order.id}" class="order">${foundPaint.color} car with ${foundWheels.style}, ${foundInterior.material}, and the ${splitPackage[0]} for a total cost of ${formatter.format(totalCost)}</div>\n`
     })

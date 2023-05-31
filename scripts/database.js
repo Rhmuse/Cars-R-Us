@@ -90,15 +90,18 @@ let database = {
     models: [
         {
             id: 1,
-            model: "Car",
+            name: "Car",
+            modifier: 1,
         },
         {
             id: 2,
-            model: "SUV",
+            name: "SUV",
+            modifier: 1.5,
         },
         {
             id: 3,
-            model: "Truck",
+            name: "Truck",
+            modifier: 2.25,
         },
     ],
     orders: [
@@ -108,6 +111,7 @@ let database = {
             technologyId: 2,
             interiorId: 4,
             paintId: 1,
+            modelId: 1,
             timestamp: 1654273865
         },
         {
@@ -116,6 +120,7 @@ let database = {
             technologyId: 3,
             interiorId: 1,
             paintId: 3,
+            modelId: 3,
             timestamp: 1654321278
         },
         {
@@ -124,6 +129,7 @@ let database = {
             technologyId: 4,
             interiorId: 3,
             paintId: 2,
+            modelId: 2,
             timestamp: 1654387642
         },
         {
@@ -132,6 +138,7 @@ let database = {
             technologyId: 1,
             interiorId: 2,
             paintId: 4,
+            modelId: 2,
             timestamp: 1654452971
         },
         {
@@ -140,6 +147,7 @@ let database = {
             technologyId: 2,
             interiorId: 1,
             paintId: 3,
+            modelId: 3,
             timestamp: 1654506385
         }
     ],
@@ -185,6 +193,10 @@ export const setCurrentOrderTechnology = (id) => {
 }
 export const setCurrentOrderWheels = (id) => {
     database.currentOrder.wheelsId = id;
+}
+
+export const setCurrentOrderModel = (id) => {
+    database.currentOrder.modelId = id;
 }
 
 export const addCurrentOrder = () => {

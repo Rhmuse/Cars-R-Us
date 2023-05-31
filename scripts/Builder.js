@@ -2,6 +2,7 @@ import { Interior } from './Options/Interior.js'
 import { Paint } from './Options/Paint.js'
 import { Technologies } from './Options/Technologies.js'
 import { Wheels } from './Options/Wheels.js'
+import { Model } from './Options/Model.js'
 import { addCurrentOrder } from './database.js'
 
 document.addEventListener(
@@ -18,6 +19,7 @@ export const Builder = () => {
         <div id="wheelsSelector" class="container selector">${Wheels()}</div>
         <div id="technologiesSelector" class="container selector">${Technologies()}</div>
     </section>
+    <div id="modelRadio" class="container radio">${Model()}</div>
     <button id="orderButton">Place Car Order</button>
     `
 }
