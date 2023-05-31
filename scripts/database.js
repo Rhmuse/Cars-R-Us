@@ -87,6 +87,20 @@ let database = {
             price: 190
         }
     ],
+    models: [
+        {
+            id: 1,
+            model: "Car",
+        },
+        {
+            id: 2,
+            model: "SUV",
+        },
+        {
+            id: 3,
+            model: "Truck",
+        },
+    ],
     orders: [
         {
             id: 1,
@@ -146,6 +160,10 @@ export const getTechnologies = () => {
 
 export const getWheels = () => {
     return database.wheels.map(wheel => ({ ...wheel }))
+}
+
+export const getModels = () => {
+    return database.models.map(model => ({ ...model }))
 }
 
 export const getOrders = () => {

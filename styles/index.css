@@ -15,12 +15,14 @@
 .selector {
     flex-direction: column;
     padding: 0 1rem 1rem 1rem;
-    width: 23%;
+    width: fit-content;
     background-color: rgb(245, 245, 220);
     border-radius: 15px;
     margin: 2rem;
     border: .5px rgb(148, 186, 238) dashed; 
     box-shadow: 5px 5px 5px  rgba(0, 0, 0, 0.3);
+    min-width: 30%;
+    height: auto;
 }
 
 select {
