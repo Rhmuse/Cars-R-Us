@@ -10,8 +10,9 @@ document.addEventListener(
     }
 )
 
+const techs = await getTechnologies();
+
 export const Technologies = () => {
-    const techs = getTechnologies();
 
     let html = "<h2>Technologies</h2>"
 

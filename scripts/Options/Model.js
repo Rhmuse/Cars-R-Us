@@ -9,8 +9,9 @@ document.addEventListener(
     }
 )
 
+const models = await getModels();
+
 export const Model = () => {
-    const models = getModels();
 
     let html = "";
 

@@ -10,8 +10,9 @@ document.addEventListener(
     }
 )
 
+const wheels = await getWheels();
+
 export const Wheels = () => {
-    const wheels = getWheels();
 
     let html = "<h2>Wheels</h2>"
 

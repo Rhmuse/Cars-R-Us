@@ -1,56 +1,24 @@
-import { getInteriors, getModels, getOrders, getPaints, getTechnologies, getWheels } from './database.js'
+import { getOrders, completeOrder } from './database.js'
 
 const formatter = new Intl.NumberFormat('en-US', {
     style: 'currency',
     currency: 'USD',
 });
 
+document.addEventListener("click", (event) => {
+    const { name, id } = event.target;
+    if (name === "complete") {
+        completeOrder(id);
+    }
+});
 
-export const Orders = () => {
-    const orders = getOrders();
-    const paints = getPaints();
-    const interiors = getInteriors();
-    const technologies = getTechnologies();
-    const wheels = getWheels();
-    const models = getModels();
+export const Orders = async () => {
+    const orders = await getOrders()
 
     let html = "<h2>Custom Car Orders</h2>\n";
 
     let ordersList = orders.map(order => {
-        const foundPaint = paints.find(
-            (paint) => {
-                return paint.id === order.paintId;
-            }
-        )
-        const foundInterior = interiors.find(
-            (interior) => {
-                return interior.id === order.interiorId;
-            }
-        )
-        const foundTechnology = technologies.find(
-            (technology) => {
-                return technology.id === order.technologyId;
-            }
-        )
-        // order should only display name of package.
-        let splitPackage = foundTechnology.package.split("(");
-
-        const foundWheels = wheels.find(
-            (wheelChoice) => {
-                return wheelChoice.id === order.wheelsId;
-            }
-        )
-
-        const foundModel = models.find(
-            (model) => {
-                return model.id === order.modelId;
-            }
-        )
-
-        let totalCost = foundInterior.price + foundPaint.price + foundTechnology.price + foundWheels.price;
-        totalCost = totalCost * foundModel.modifier;
-
-        return `<div id="order--${order.id}" class="order">${foundPaint.color} car with ${foundWheels.style}, ${foundInterior.material}, and the ${splitPackage[0]} for a total cost of ${formatter.format(totalCost)}</div>\n`
+        return `<div id="order--${order.id}" class="order">${order.paintColor.color} ${order.model.name} with ${order.wheels.style} wheels, ${order.interior.material} interior, and the ${order.technology.package.split("(")[0]} for a total cost of ${formatter.format(order.totalCost)}<input type="button" name="complete" id="${order.id}" value="Complete"></div>\n`
     })
 
     html += ordersList.join("");

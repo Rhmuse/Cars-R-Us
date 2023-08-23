@@ -2,11 +2,11 @@ import { CarsRUs } from './CarsRUs.js';
 
 const mainContainer = document.querySelector("#main");
 
-const renderAllHTML = () => {
-    mainContainer.innerHTML = CarsRUs();
+const renderAllHTML = async () => {
+    mainContainer.innerHTML = await CarsRUs();
 }
 
-renderAllHTML();
+await renderAllHTML();
 
 document.addEventListener("stateChanged", event => {
     console.log("State of data has changed. Regenerating HTML...")

@@ -154,28 +154,40 @@ let database = {
     currentOrder: {}
 }
 
-export const getPaints = () => {
-    return database.paints.map(paint => ({ ...paint }));
+export const getPaints = async () => {
+    const res = await fetch("http://localhost:5150/paintcolors");
+    const data = await res.json();
+    return data;
 }
 
-export const getInteriors = () => {
-    return database.interiors.map(interior => ({ ...interior }))
+export const getInteriors = async () => {
+    const res = await fetch("http://localhost:5150/interiors");
+    const data = await res.json();
+    return data;
 }
 
-export const getTechnologies = () => {
-    return database.technologies.map(technology => ({ ...technology }))
+export const getTechnologies = async () => {
+    const res = await fetch("http://localhost:5150/technologies");
+    const data = await res.json();
+    return data;
 }
 
-export const getWheels = () => {
-    return database.wheels.map(wheel => ({ ...wheel }))
+export const getWheels = async () => {
+    const res = await fetch("http://localhost:5150/wheels");
+    const data = await res.json();
+    return data;
 }
 
-export const getModels = () => {
-    return database.models.map(model => ({ ...model }))
+export const getModels = async () => {
+    const res = await fetch("http://localhost:5150/models");
+    const data = await res.json();
+    return data;
 }
 
-export const getOrders = () => {
-    return database.orders.map(order => ({ ...order }))
+export const getOrders = async () => {
+    const res = await fetch("http://localhost:5150/orders");
+    const data = await res.json();
+    return data;
 }
 
 export const getCurrentOrder = () => {
@@ -183,7 +195,7 @@ export const getCurrentOrder = () => {
 }
 
 export const setCurrentOrderPaint = (id) => {
-    database.currentOrder.paintId = id;
+    database.currentOrder.paintColorId = id;
 }
 export const setCurrentOrderInterior = (id) => {
     database.currentOrder.interiorId = id;
@@ -199,17 +211,26 @@ export const setCurrentOrderModel = (id) => {
     database.currentOrder.modelId = id;
 }
 
-export const addCurrentOrder = () => {
+export const addCurrentOrder = async () => {
     const newOrder = { ...database.currentOrder };
 
-    const lastIndex = database.orders.length - 1;
-    newOrder.id = database.orders[lastIndex].id + 1;
+    const orderOptions = {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(newOrder)
+    }
 
-    newOrder.timestamp = Date.now();
-
-    database.orders.push(newOrder);
+    await fetch("http://localhost:5150/orders", orderOptions);
 
     database.currentOrder = {};
+    document.dispatchEvent(new CustomEvent("stateChanged"));
+}
 
-    document.dispatchEvent(new CustomEvent("stateChanged")); ``
-}  
+export const completeOrder = async (orderId) => {
+    await fetch(`http://localhost:5150/orders/${orderId}/fulfill`, {
+        method: "POST",
+    });
+    document.dispatchEvent(new CustomEvent("stateChanged"));
+};

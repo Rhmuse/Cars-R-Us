@@ -10,8 +10,10 @@ document.addEventListener(
     }
 )
 
+const paints = await getPaints();
+
 export const Paint = () => {
-    const paints = getPaints();
+
 
     let html = "<h2>Paints</h2>"
 

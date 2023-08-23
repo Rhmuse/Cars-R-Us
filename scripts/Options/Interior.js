@@ -9,9 +9,10 @@ document.addEventListener(
         }
     }
 )
+const interiors = await getInteriors();
 
 export const Interior = () => {
-    const interiors = getInteriors();
+
 
     let html = "<h2>Interiors</h2>"
 
